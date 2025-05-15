@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voting Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #191313;
+        }
+       .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgb(50, 176, 205);
+        }
+        .container:hover {
+            box-shadow: 0 0 20px rgba(141, 237, 239, 0.2);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select, input[type="text"] {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            margin-left: -10px;
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            width: 50%;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            margin-left: 25%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+       .result-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Voting Page</h1>
+        <form action="/cast_vote" method="post">
+            <label for="candidate_id">Candidate Name:</label>
+            <select id="candidate_id"  name="candidate_id">
+                {% for candidate in candidates %}
+                    <option value="{{ candidate[0] }}">{{ candidate[0] }}</option>
+                {% endfor %}
+            </select><br>
+            
+            <input type="text" placeholder="Voter ID:" id="voter_id" name="voter_id"><br><br>
+            <input type="submit" value="Cast Vote">
+        </form>
+        <p class="result-link"><a href="/result">View Results</a></p>
+    </div>
+</body>
+</html>

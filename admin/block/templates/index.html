@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voting System</title>
+    <style>
+        h1{
+            text-align: center;
+            color: #333;
+            font-size: 24px;    
+           font-weight: bold;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #100202;
+        }
+       .container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+       .form-toggle {
+            margin-top: 20px;
+            text-align: center;
+        }
+       .form-toggle button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       .form-toggle button.active {
+            background-color: #007bff;
+            color: white;
+        }
+        form {
+            display: none;
+        }
+        form.active {
+            display: block;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            height: 20px;
+            margin-bottom: 20px;
+            border-radius:10px ;
+            margin-left:-10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            width: 50%;
+            margin-left:25%;
+            margin-bottom: 5%;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            font-weight: bold;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Voting System</h1>
+        <div class="form-toggle">
+            <button class="active" onclick="toggleForm('login')">Login</button>
+            <button onclick="toggleForm('register')">Register</button>
+        </div><br>
+        <form id="login-form" class="active" action="/login" method="post">
+            
+            <input type="text" placeholder="Username..." name="username"><br>
+            <input type="password" placeholder="Password..." name="password"><br><br>
+            <input type="submit" value="Login">
+        </form>
+        <form id="register-form" action="/register" method="post">
+            <input type="text" placeholder="Username..." id="username" name="username"><br>
+            <input type="password" placeholder="Password..." id="password" name="password"><br><br>
+            <input type="submit" value="Register">
+        </form>
+        <a href="/admin">Admin Login</a>
+    </div>
+
+    <script>
+        function toggleForm(formName) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const loginButton = document.querySelector('.form-toggle button:first-child');
+            const registerButton = document.querySelector('.form-toggle button:last-child');
+
+            if (formName === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                loginButton.classList.add('active');
+                registerButton.classList.remove('active');
+            } else {
+                registerForm.classList.add('active');
+                loginForm.classList.remove('active');
+                registerButton.classList.add('active');
+                loginButton.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
